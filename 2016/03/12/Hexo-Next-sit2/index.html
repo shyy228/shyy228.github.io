@@ -1,0 +1,764 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo,Blog," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="修改Hexo文件夹中的_config.yum用编辑器打开_config.yum,找到 # Deployment字段修改成下面的这样,注意:冒号后面都有一个空格。 repository: 的地址就是你自己申请项目地址。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo的搭建II-绑定独立域名">
+<meta property="og:url" content="http://yoursite.com/2016/03/12/Hexo-Next-sit2/index.html">
+<meta property="og:site_name" content="yiy-atom's Blog">
+<meta property="og:description" content="修改Hexo文件夹中的_config.yum用编辑器打开_config.yum,找到 # Deployment字段修改成下面的这样,注意:冒号后面都有一个空格。 repository: 的地址就是你自己申请项目地址。">
+<meta property="og:image" content="http://7xrpmz.com1.z0.glb.clouddn.com/hexohexo%20conf.png">
+<meta property="og:image" content="http://7xrpmz.com1.z0.glb.clouddn.com/hexohexo%20ok.png">
+<meta property="og:image" content="http://7xrpmz.com1.z0.glb.clouddn.com/hexopage.png">
+<meta property="og:image" content="http://7xrpmz.com1.z0.glb.clouddn.com/hexogithub%20ip.png">
+<meta property="og:image" content="http://7xrpmz.com1.z0.glb.clouddn.com/hexohsk1.png">
+<meta property="og:image" content="http://7xrpmz.com1.z0.glb.clouddn.com/hexohsk2.png">
+<meta property="og:image" content="http://7xrpmz.com1.z0.glb.clouddn.com/hexohsk3.png">
+<meta property="og:updated_time" content="2016-03-29T05:44:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo的搭建II-绑定独立域名">
+<meta name="twitter:description" content="修改Hexo文件夹中的_config.yum用编辑器打开_config.yum,找到 # Deployment字段修改成下面的这样,注意:冒号后面都有一个空格。 repository: 的地址就是你自己申请项目地址。">
+<meta name="twitter:image" content="http://7xrpmz.com1.z0.glb.clouddn.com/hexohexo%20conf.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Hexo的搭建II-绑定独立域名 | yiy-atom's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">yiy-atom's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo的搭建II-绑定独立域名
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-12T15:39:54+08:00" content="2016-03-12">
+              2016-03-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Blog/" itemprop="url" rel="index">
+                    <span itemprop="name">Blog</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/12/Hexo-Next-sit2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/12/Hexo-Next-sit2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>修改Hexo文件夹中的_config.yum</strong><br><img src="http://7xrpmz.com1.z0.glb.clouddn.com/hexohexo%20conf.png" alt=""><br>用编辑器打开_config.yum,找到 <code># Deployment</code>字段<br>修改成下面的这样,<font color="red">注意:冒号后面都有一个空格。 repository: 的地址就是你自己申请项目地址。</font><br><a id="more"></a><!--more--><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/shyy228/shyy228.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>修改完保存。<br><strong>将博客deploy到仓库</strong><br>打开Git Shell 进入hexo的文件夹，执行下面的指令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p><strong>如果在提交页面的时候出现</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error Deployer not found: git</span><br></pre></td></tr></table></figure></p>
+<p>执行以下命令<br><code>npm install hexo-deployer-git --save</code></p>
+<p>在提交一次<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>如果看到下图就成功了<br><img src="http://7xrpmz.com1.z0.glb.clouddn.com/hexohexo%20ok.png" alt=""><br>恭喜，个人博客就已经部署到 GitHub 上了，你可以到你的GitHub仓库查看是否已经更新。此时,通过 your_user_name.github.io（即你那个仓库的名称，形如：”你的 GitHub 用户名”.github.io）,就可以看到你的个人博客了。<br><strong>写博文</strong><br>我们可以使用命令新建一篇博文,使用 Git Shell 进入 Hexo 文件夹，输入以下命令：<br>新建一篇文章：<code>hexo new &quot;文章名&quot;</code><br>命令执行完后，就会发现在 Hexo\source_posts 目录中多了一个文件博文名.md，这就是我们刚才新建的博文。<br>此外，我们也可以直接进入 Hexo\source_posts 目录中，右键新建一个文本文档，将名字改为博文名.md,这样也新建了一篇博文。</p>
+<p>新建一个页面：<code>hexo page “页面名称”</code><br>上面新建的博文是显示在单个文章界面，这里新建的页面是作为单个页面显示的，比如下面页面的分类、标签、归档和关于我，你点击后都是显示为单个页面。<br><img src="http://7xrpmz.com1.z0.glb.clouddn.com/hexopage.png" alt=""><br>命令执行完后，就会发现在在 Hexo\source 目录中多了一个文件夹，里面还有一个index.md,这就代表我们新建了一个页面。<br><strong>写博文</strong><br>因为我们的博文都是用<a href="http://baike.baidu.com/item/markdown" target="_blank" rel="external">MarkDown</a>的格式编写的。所以这里我推荐两款编辑器。</p>
+<ul>
+<li><a href="http://zrey.com/app/markeditor" target="_blank" rel="external">MarkEditor</a></li>
+<li><a href="http://www.typora.io" target="_blank" rel="external">Typora</a></li>
+</ul>
+<p>MarkEditor使用需要付费，可以使用优惠码<code>shyy228@163.com</code>打七折。<br>Typora是免费的，所写既所见。也是很牛逼的一款编辑器。<br>两者都很方便，对于新手来说还是推荐第一款。牛逼的地方我就不多说了，有兴趣的可以去官方看看。</p>
+<p>有了编辑器就可以打开.bd文件，正式写博文了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 本地Hexo部署到GitHub，绑定独立域名 //这里是文件名</span><br><span class="line">date: 2016-03-12 15:39:54 //日期</span><br><span class="line">categories: B<span class="built_in">log</span> //分类</span><br><span class="line">tags: [Hexo,B<span class="built_in">log</span>] //标签</span><br><span class="line">----</span><br></pre></td></tr></table></figure></p>
+<p>三个“—”后面就是博文的内容<br><strong>发博文</strong><br>博文写好了，你得发表出去别人才看得到呀。依然在 Git Shell 中进入 Hexo 文件夹，执行下面几条命令，将博客部署到 GitHub 上：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">(若要本地预览就先执行 hexo server)</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>快捷命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo g == hexo generate</span><br><span class="line">hexo d == hexo deploy</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo n == hexo new</span><br><span class="line"><span class="comment"># 还能组合使用，如：</span></span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
+<p>刷新你的个人博客，就可以看到新鲜出炉的博文了，赶紧邀请小伙伴们来欣赏吧。<br><strong>绑定域名</strong><br>访问博客时候输入xxxxx.github.io是不是很不方便。<br>能否自定义一个域名。<br>方法如下：<br>1：首先得有域名<br>到<a href="http://hsk.oray.com/" target="_blank" rel="external">花生壳</a>网站申请一个域名。打开网站点击壳域名，按照网站提示操作就可以申请了。<br>2:获取博客的ip地址<br>打开cmd终端输入命令 ping 你的博客地址。<br>这样我们就拿到ip地址 185.31.18.133<br>如图<br><img src="http://7xrpmz.com1.z0.glb.clouddn.com/hexogithub%20ip.png" alt=""><br>到<a href="http://hsk.oray.com/" target="_blank" rel="external">花生壳</a>登录你的账户，点击管理中心-域名<br>如图<br><img src="http://7xrpmz.com1.z0.glb.clouddn.com/hexohsk1.png" alt=""><br>点击你自己的域名<br>如图<br><img src="http://7xrpmz.com1.z0.glb.clouddn.com/hexohsk2.png" alt=""><br>使用A记录指向 将github的ip指向到你自己的域名<br><img src="http://7xrpmz.com1.z0.glb.clouddn.com/hexohsk3.png" alt=""><br>3：将独立域名与github绑定<br>到我的github仓库，点击右下角的「Download ZIP」，下载源文件，解压，找到CNAME文件，用记事本打开，里面输入你申请好的域名，比如：yiy-atom.com。之后将CANME文件拷贝到Hexo\source目录下，用hexo命令提交上去。<br><strong>然后在输入你自定义的域名就可以访问你的博客。</strong><br><strong>完！</strong><br><strong>博文参考<a href="http://yangruihan.com/" target="_blank" rel="external">yangruihua</a></strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+          
+            <a href="/tags/Blog/" rel="tag">#Blog</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/11/hexo-addpc/" rel="next" title="Hexo多台电脑使用">
+                <i class="fa fa-chevron-left"></i> Hexo多台电脑使用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/29/MACBookPRO-UP-SSD/" rel="prev" title="老本本MC700升级">
+                老本本MC700升级 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/12/Hexo-Next-sit2/"
+           data-title="Hexo的搭建II-绑定独立域名" data-url="http://yoursite.com/2016/03/12/Hexo-Next-sit2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="二哥必胜" />
+          <p class="site-author-name" itemprop="name">二哥必胜</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">二哥必胜</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yiy-atom"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
